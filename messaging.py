@@ -53,6 +53,7 @@ def send_message(number, message):
     opts.add_argument("--headless")
     opts.add_argument("--no-sandbox")
     opts.add_argument("--disable-gpu")
+    opts.add_argument("--incognito")
 
     browser = webdriver.Chrome(
         executable_path=PATH_CHROMEDRIVER, options=opts)
