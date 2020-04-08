@@ -1,12 +1,23 @@
 # 785S-messaging-automation
 Messaging automation using an AirCard 785S
 
-The url and credentials of Aircard manager can be set as environment variables or in an ini file. Environment variables have priority over the config file.   
-Environment variables should be named AIRCARD_URL and AIRCARD_PASSWORD. An example of a config file is provided.
+## Prerequires  
+You need an instance of AirCard Manager running on your server.
 
-The project requires a version of Chrome and chromedriver (I use Chromium and chromium-chromedriver).  
+## How to use  
+1. Create your config.ini based on the given example or don't forget to pass your environmenet variables when running the docker image on step 2.  
 
-A simple Flask app is used to send a message using an url like follows:  
-http://localhost:5000/send?number=my_number&message=Hello  
+2. Build and run the docker image:  
+```
+docker build ./ -t messaging  
+docker run -p 3000:3000 -d messaging
+```
 
-Work in progress
+3. Send messages with the simple Flask app using an url like follows:  
+http://127.0.0.1:3000/send?number=my_number&message=Hello  
+
+## Notes
+The IP and the port can be modified in the Dockerfile.  
+
+The url and credentials of AirCard Manager can be set as environment variables or in a config file. Environment variables have priority over the config file.   
+Environment variables should be named AIRCARD_URL and AIRCARD_PASSWORD. An example of a config file is provided.  
