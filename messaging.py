@@ -59,7 +59,7 @@ def send_message(number, message):
         executable_path=PATH_CHROMEDRIVER, options=opts)
 
     # Open AirCard's login page
-    browser.get(f"http://{URL}/index.html")
+    browser.get(f"{URL}/index.html")
     logging.info("Page is open")
 
     # Login
@@ -68,7 +68,7 @@ def send_message(number, message):
     logging.info("Connected")
 
     # Open the messaging page
-    browser.get(f"http://{URL}/index.html#sms_compose")
+    browser.get(f"{URL}/index.html#sms_compose")
 
     # Send the message
     browser.find_element_by_id('sms_sendMsg_receiver').send_keys(f"{number}")

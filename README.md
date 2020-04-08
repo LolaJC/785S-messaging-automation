@@ -6,12 +6,12 @@ Automatic sending of SMS using an AirCard 785S.
 
 2. How to run with environment variables:  
 ```
-docker run -p 3000:3000 -e "AIRCARD_URL=192.168.1.1" -e "AIRCARD_PASSWORD=password" -d lolajc/785s-messaging-automation
+docker run -p 3000:3000 -e "AIRCARD_URL=http://192.168.1.1" -e "AIRCARD_PASSWORD=password" -d lolajc/785s-messaging-automation
 ```
 
 Or how to run with a config file:  
 ```
-docker run -p 3000 -v ./config.ini:/messaging/config.ini -d lolajc/785s-messaging-automation
+docker run -p 3000:3000 ${PWD}/config.ini:/messaging/config.ini -d lolajc/785s-messaging-automation
 ```
 
 3. Send messages with the simple Flask app using an url like follows:  
