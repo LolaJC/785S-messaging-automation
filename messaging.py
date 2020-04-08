@@ -37,8 +37,7 @@ def messaging(number, message):
 
     # Set options for Chrome
     opts = webdriver.ChromeOptions()
-
-    # opts.add_argument("--headless")
+    opts.add_argument("--headless")
 
     browser = webdriver.Chrome(
         executable_path=PATH_CHROMEDRIVER, options=opts)
