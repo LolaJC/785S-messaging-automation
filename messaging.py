@@ -39,9 +39,12 @@ def send_message(number, message):
     except KeyError: 
         logging.info(f"Environment variables are not set")
         # Get credentials from config file
-        CONFIG.read(CONFIG_FILE_PATH)
-        URL = CONFIG.get('AirCard', 'URL')
-        PASSWORD = CONFIG.get('AirCard', 'PASSWORD')
+        try:
+            CONFIG.read(CONFIG_FILE_PATH)
+            URL = CONFIG.get('AirCard', 'URL')
+            PASSWORD = CONFIG.get('AirCard', 'PASSWORD')
+        except:
+            logging.error("config.ini does not exist")
     logging.info(f"URL: {URL}")
     logging.info(f"PASSWORD: {PASSWORD}")
 
