@@ -6,7 +6,7 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from time import sleep
 
-def messaging(number, message):
+def send_message(number, message):
     # Set logging level to info
     logging.basicConfig(level=logging.INFO)
 
@@ -58,12 +58,13 @@ def messaging(number, message):
     form = browser.find_element_by_id('form_mo_sms')
     form.submit()
     logging.info("Sending message")
-    sleep(2)
+    sleep(3)
     try:
-        browser.find_element_by_xpath(("//div[@id='dialogs']"
-                                       "//div[@class='active' "
-                                       "and @id='dialog_SmsSentOut']"))
-        logging.info("Message was sent")
+        browser.find_element_by_xpath(("//div[@class='active' and "
+                                       "@id='dialog_SmsSentOut']"))
+        result = "Message was sent"
     except NoSuchElementException:
-        logging.warning("There was an error while sending the message")
+        result = "There was an error while sending the message"
+    logging.warning(f"{result}")
     browser.close()
+    return f"{result}"
