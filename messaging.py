@@ -31,3 +31,20 @@ except KeyError:
     PASSWORD = CONFIG.get('Aircard', 'PASSWORD')
 logging.info(f"URL: {URL}")
 logging.info(f"PASSWORD: {PASSWORD}")
+
+# Set options for Chrome
+opts = webdriver.ChromeOptions()
+
+# opts.add_argument("--headless")
+
+browser = webdriver.Chrome(
+    executable_path=PATH_CHROMEDRIVER, options=opts)
+
+# Open Aircard's login page
+browser.get(f"http://{URL}/index.html")
+logging.info("Page is open")
+
+# Login
+browser.find_element_by_id('session_password').send_keys(PASSWORD)
+browser.find_element_by_id('button_login').click()
+logging.info("Connected")
