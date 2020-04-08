@@ -7,3 +7,6 @@ def send():
     number = request.args.get('number')
     message = request.args.get('message')
     return send_message(number, message)
+
+if __name__ == "__main__":
+    app.run()
