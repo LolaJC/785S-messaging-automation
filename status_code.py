@@ -9,7 +9,7 @@ def check_status_code():
     Checks the website's status code.
 
     Returns:
-        status (int): the websites's status code
+        status (str): the websites's status code
     """
     # Set logging level to info
     logging.basicConfig(level=logging.INFO)
@@ -39,4 +39,4 @@ def check_status_code():
     logging.info(f"URL: {URL}")
 
     # Return status code
-    return urllib.request.urlopen(f"{URL}/index.html").getcode()
+    return f"{urllib.request.urlopen(f'{URL}/index.html').getcode()}"
